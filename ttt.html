@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherToday</title>
+    <link rel="stylesheet" href="API2.css">
+</head>
+
+<body>
+    <div id="top">
+        <h1>Weather API</h1>
+    </div>
+    <div id="main">
+        <input type="text" name="" id="CityName" placeholder="Enter the city name">
+        <button onclick="runClick()">Submit</button>
+        <div class="inital">'s Weather Today<span id="1"></span></div>
+        <br>
+        <div class="temp"><span id="2"></span>°F</div>
+
+
+    </div>
+    <div id="bot"></div>
+
+    <script>
+
+
+
+
+        async function GetInput() {
+            let inputValue = document.getElementById("CityName");
+
+            const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputValue.value + '&appid=ae542e9b9823c0d3096df2a1104f21ef');
+
+
+            const data = await response.json();
+
+            document.getElementById("2").innerHTML = data.main.temp;
+            document.getElementById("1").innerHTML = data.name;
+
+        }
+
+        function runCick() {
+            GetInput();
+        }
+
+    </script>
+</body>
+
+</html>
